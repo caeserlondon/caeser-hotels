@@ -6,6 +6,8 @@ const dbConfig = require('./dbConfig.js');
 
 const roomsRoute = require('./routes/roomsRoute');
 
+app.use('/api/rooms', roomsRoute);
+
 const port = process.env.PORT || 5001;
 
 app.listen(port, () =>
