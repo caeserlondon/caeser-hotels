@@ -28,7 +28,7 @@ const roomSchema = mongoose.Schema(
 			required: [true, 'Please enter hotel address'],
 			// using enum to restrict the input
 			enum: {
-				values: ['Downtown Dubai ', 'Dubai Marina'],
+				values: ['Downtown Dubai', 'Dubai Marina'],
 				message: 'Please select correct address for room',
 			},
 		},
@@ -38,7 +38,7 @@ const roomSchema = mongoose.Schema(
 	}
 );
 
-// module.exports = mongoose.models.Room || mongoose.model('Room', roomSchema); to be used eith new RoomSchema
+// module.exports = mongoose.models.Room || mongoose.model('Room', roomSchema); to be used with new RoomSchema
 
 const roomModel = mongoose.model('rooms', roomSchema);
 
