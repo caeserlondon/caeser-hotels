@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Carousel } from 'react-bootstrap';
 
 const Room = ({ room }) => {
 	const [show, setShow] = useState(false);
@@ -24,11 +24,19 @@ const Room = ({ room }) => {
 				</div>
 			</div>
 
-			<Modal show={show} onHide={handleClose}>
+			<Modal show={show} onHide={handleClose} size="lg">
 				<Modal.Header closeButton>
 					<Modal.Title>{room.name}</Modal.Title>
 				</Modal.Header>
-				<Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+				<Modal.Body>
+					<Carousel fade>
+						{room.imageurls.map((url) => (
+							<Carousel.Item>
+								<img className="d-block w-100 big-img" src={url} alt="room" />
+							</Carousel.Item>
+						))}
+					</Carousel>
+				</Modal.Body>
 				<Modal.Footer>
 					<Button variant="secondary" onClick={handleClose}>
 						Close
