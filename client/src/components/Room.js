@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 
 const Room = ({ room }) => {
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 	return (
 		<div className="row room-card">
 			<div className="col-md-4">
@@ -13,9 +18,23 @@ const Room = ({ room }) => {
 				<h6> Price Per Night: ${room.pricePerNight} </h6>
 				<h6>Located at: {room.address} </h6>
 				<div style={{ float: 'right' }}>
-					<button className="btn btn-dark">View Details</button>
+					<button onClick={handleShow} className="btn btn-dark">
+						View Details
+					</button>
 				</div>
 			</div>
+
+			<Modal show={show} onHide={handleClose}>
+				<Modal.Header closeButton>
+					<Modal.Title>{room.name}</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+				<Modal.Footer>
+					<Button variant="secondary" onClick={handleClose}>
+						Close
+					</Button>
+				</Modal.Footer>
+			</Modal>
 		</div>
 	);
 };
