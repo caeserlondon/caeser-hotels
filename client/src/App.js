@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 
 function App() {
@@ -8,8 +8,9 @@ function App() {
 		<div className="App">
 			<Navbar />
 			<BrowserRouter>
-				{/* <Route path="/home" exact component={HomeScreen} /> */}
-				<Route path="/home" element={<HomeScreen />} />
+				<Routes>
+					<Route path="/home" element={<HomeScreen />} />
+				</Routes>
 			</BrowserRouter>
 		</div>
 	);
