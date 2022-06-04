@@ -25,7 +25,7 @@ const Room = ({ room }) => {
 			</div>
 
 			<Modal show={show} onHide={handleClose} size="lg">
-				<Modal.Header closeButton>
+				<Modal.Header>
 					<Modal.Title>{room.name}</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
@@ -36,6 +36,7 @@ const Room = ({ room }) => {
 							</Carousel.Item>
 						))}
 					</Carousel>
+					<p>{room.description}</p>
 				</Modal.Body>
 				<Modal.Footer>
 					<Button variant="secondary" onClick={handleClose}>
