@@ -48,6 +48,12 @@ code {
 	border-radius: 5px;
 }
 
+.big-img {
+	height: 400px;
+	/* width: 100%; */
+	border-radius: 5px;
+}
+
 h3 {
 	font-size: 20px;
 }
@@ -63,4 +69,10 @@ h6 {
 	margin-top: 20px;
 	border-radius: 5px;
 	padding: 20px;
+}
+
+.btn {
+	background-color: black;
+	color: white;
+	box-shadow: none;
 }
