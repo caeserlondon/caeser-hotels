@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-function Bookingscreen({ match }) {
+function Bookingscreen() {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
-
 	const [room, setRoom] = useState();
+	let { roomid } = useParams();
 
 	useEffect(() => {
 		async function fetchData() {
 			try {
 				setLoading(true);
-				const data = (await axios.post('/api/rooms/getroombyid'),
-				{ roomid: match.params.roomid }).data;
+				const data = await (
+					await axios.post('/api/rooms/getroombyid', { roomid })
+				).data;
 				// console.log(data);
 				setRoom(data);
 				setLoading(false);
@@ -23,7 +25,7 @@ function Bookingscreen({ match }) {
 			}
 		}
 		fetchData();
-	}, []);
+	}, [roomid]);
 
 	return (
 		<div className="booking-container">
