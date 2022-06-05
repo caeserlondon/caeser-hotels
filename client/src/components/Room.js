@@ -48,7 +48,7 @@ const Room = ({ room }) => {
 					<p>{room.description}</p>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button variant="secondary" onClick={handleClose}>
+					<Button variant="dark" onClick={handleClose}>
 						Close
 					</Button>
 				</Modal.Footer>
