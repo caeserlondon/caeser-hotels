@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Room = ({ room }) => {
 	const [show, setShow] = useState(false);
@@ -18,6 +19,10 @@ const Room = ({ room }) => {
 				<h6> Price Per Night: ${room.pricePerNight} </h6>
 				<h6>Located at: {room.address} </h6>
 				<div style={{ float: 'right' }}>
+					<Link to={`/book/${room._id}`}>
+						<button className="btn btn-dark m-2">Book Now</button>
+					</Link>
+
 					<button onClick={handleShow} className="btn btn-dark">
 						View Details
 					</button>
@@ -31,8 +36,12 @@ const Room = ({ room }) => {
 				<Modal.Body>
 					<Carousel fade>
 						{room.imageurls.map((url) => (
-							<Carousel.Item>
-								<img className="d-block w-100 big-img" src={url} alt="room" />
+							<Carousel.Item key={room._id}>
+								<img
+									className="d-block w-100 big-img"
+									src={url}
+									alt={room.name}
+								/>
 							</Carousel.Item>
 						))}
 					</Carousel>
