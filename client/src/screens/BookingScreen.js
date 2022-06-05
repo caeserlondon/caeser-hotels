@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 function Bookingscreen() {
 	const [loading, setLoading] = useState(true);
@@ -30,7 +31,7 @@ function Bookingscreen() {
 	return (
 		<div className="booking-container">
 			{loading ? (
-				<h1>Loading ... </h1>
+				<Loader />
 			) : error ? (
 				<h1>Error ... </h1>
 			) : (
