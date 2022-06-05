@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Room from '../components/Room';
+import Loader from '../components/Loader';
 
 const HomeScreen = () => {
 	const [rooms, setRooms] = useState([]);
@@ -28,7 +29,7 @@ const HomeScreen = () => {
 		<div className="container">
 			<section className="row justify-content-center mt-5">
 				{loading ? (
-					<h1> Loading </h1>
+					<Loader />
 				) : error ? (
 					<h1> Error </h1>
 				) : (
