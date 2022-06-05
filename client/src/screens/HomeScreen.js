@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Room from '../components/Room';
 import Loader from '../components/Loader';
+import Error from '../components/Error';
 
 const HomeScreen = () => {
 	const [rooms, setRooms] = useState([]);
@@ -30,9 +31,7 @@ const HomeScreen = () => {
 			<section className="row justify-content-center mt-5">
 				{loading ? (
 					<Loader />
-				) : error ? (
-					<h1> Error </h1>
-				) : (
+				) : rooms.length > 1 ? (
 					rooms.map((room) => {
 						// console.log(room);
 						return (
@@ -41,6 +40,8 @@ const HomeScreen = () => {
 							</article>
 						);
 					})
+				) : (
+					<Error />
 				)}
 			</section>
 		</div>
