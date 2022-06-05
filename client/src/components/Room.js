@@ -36,7 +36,7 @@ const Room = ({ room }) => {
 				<Modal.Body>
 					<Carousel fade>
 						{room.imageurls.map((url) => (
-							<Carousel.Item key={room._id}>
+							<Carousel.Item key={url}>
 								<img
 									className="d-block w-100 big-img"
 									src={url}
