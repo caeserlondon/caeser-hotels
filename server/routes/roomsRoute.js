@@ -17,7 +17,7 @@ router.get('/getallrooms', async (req, res) => {
 
 // --GET ROOM BY ID --
 router.post('/getroombyid', async (req, res) => {
-	console.log(req.body);
+	// console.log(req.body);
 	try {
 		const room = await Room.findOne({ _id: req.body.roomid });
 		res.send(room);
