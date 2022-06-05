@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
+import Error from '../components/Error';
 
 function Bookingscreen() {
 	const [loading, setLoading] = useState(true);
@@ -32,9 +33,7 @@ function Bookingscreen() {
 		<div className="booking-container">
 			{loading ? (
 				<Loader />
-			) : error ? (
-				<h1>Error ... </h1>
-			) : (
+			) : room ? (
 				<div className="row booking-card">
 					<div className="col-md-6">
 						<h3>{room.name}</h3>
@@ -65,6 +64,8 @@ function Bookingscreen() {
 						<button className="btn btn-dark">Pay Now</button>
 					</div>
 				</div>
+			) : (
+				<Error />
 			)}
 		</div>
 	);
