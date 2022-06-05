@@ -6,7 +6,7 @@ import Error from '../components/Error';
 
 function Bookingscreen() {
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(false);
+	const [error, setError] = useState();
 	const [room, setRoom] = useState();
 	let { roomid } = useParams();
 
