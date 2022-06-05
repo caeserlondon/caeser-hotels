@@ -26,14 +26,14 @@ function Bookingscreen({ match }) {
 	}, []);
 
 	return (
-		<div>
+		<div className="booking-container">
 			{loading ? (
 				<h1>Loading ... </h1>
 			) : error ? (
 				<h1>Error ... </h1>
 			) : (
-				<div className="row">
-					<div className="col-md-5">
+				<div className="row booking-card">
+					<div className="col-md-6">
 						<h3>{room.name}</h3>
 						<img
 							src={room.imageurls[0]}
@@ -41,13 +41,25 @@ function Bookingscreen({ match }) {
 							className="big-image"
 						/>
 					</div>
-					<div className="col-md-5">
-						<h3>Booking Details</h3>
+					<div className="col-md-6">
+						<div style={{ textAlign: 'right' }}>
+							<h3>Booking Details</h3>
+							<hr className="horizontal-line" />
+							<p>Name : </p>
+							<p>From Date : </p>
+							<p>To Date : </p>
+							<p>Guest Capacity : {room.guestCapacity} </p>
+						</div>
+					</div>
+					<div style={{ textAlign: 'right' }}>
+						<h3>Price To Pay</h3>
 						<hr className="horizontal-line" />
-						<p>Name : </p>
-						<p>From Date : </p>
-						<p>To Date : </p>
-						<p>Guest Capacity : </p>
+						<p>Total Nights</p>
+						<p>Daily Rate : {room.pricePerNight}</p>
+						<p>Total Amount</p>
+					</div>
+					<div style={{ float: 'right' }}>
+						<button className="btn btn-dark">Pay Now</button>
 					</div>
 				</div>
 			)}
