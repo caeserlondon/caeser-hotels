@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 
 const RegisterScreen = () => {
@@ -6,7 +7,7 @@ const RegisterScreen = () => {
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
 
-	const register = () => {
+	const register = async () => {
 		if (password === confirmPassword) {
 			const user = {
 				name,
@@ -15,6 +16,12 @@ const RegisterScreen = () => {
 				confirmPassword,
 			};
 			console.log(user);
+
+			try {
+				const result = await axios.post('/api/users/register', user).data;
+			} catch (error) {
+				console.log(error);
+			}
 		} else {
 			alert('Please enter matching passwords');
 		}
