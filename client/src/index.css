@@ -90,3 +90,9 @@ h6 {
 	display: flex;
 	justify-content: center;
 }
+
+/* ------ REGISTER SCREEN ------  */
+
+input {
+	margin: 10px 0;
+}
