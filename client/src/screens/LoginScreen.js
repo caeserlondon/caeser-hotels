@@ -32,11 +32,11 @@ const LoginScreen = () => {
 
 	return (
 		<div>
+			{loading && <Loader />}
 			<div className="row justify-content-center mt-5">
 				<div className="col-md-5">
 					<div>
 						<h3>Login</h3>
-						{loading && <Loader />}
 						{error && <Error error="Invalid Credentials" />}
 						<input
 							type="email"
