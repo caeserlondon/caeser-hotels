@@ -13,7 +13,6 @@ const RegisterScreen = () => {
 
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
-	const [success, setSuccess] = useState(false);
 
 	const register = async () => {
 		if (password !== confirmPassword) {
@@ -27,10 +26,10 @@ const RegisterScreen = () => {
 
 			try {
 				setLoading(true);
-				// const result = await axios.post('/api/users/register', user).data;
+
 				await axios.post('/api/users/register', user).data;
 				setLoading(false);
-				setSuccess(true);
+
 				setName('');
 				setEmail('');
 				setPassword('');
@@ -48,7 +47,7 @@ const RegisterScreen = () => {
 			<div className="row justify-content-center mt-5">
 				<div className="col-md-5">
 					{loading && <Loader />}
-					{success && <Success success="User Registered Successfully" />}
+
 					{error && <Error error="Email already registred" />}
 
 					<h3 className="text-center m-2">Register</h3>
