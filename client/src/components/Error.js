@@ -1,8 +1,8 @@
-const Error = () => {
+const Error = ({ error }) => {
 	return (
 		<div>
 			<div className="alert alert-danger" role="alert">
-				Something went wrong, Please try again later ...
+				{error}
 			</div>
 		</div>
 	);
