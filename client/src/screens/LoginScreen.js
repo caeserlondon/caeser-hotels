@@ -1,9 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+import Error from '../components/Error';
+import Loader from '../components/Loader';
+
 const LoginScreen = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(false);
 
 	const Login = async () => {
 		const user = {
@@ -12,8 +18,13 @@ const LoginScreen = () => {
 		};
 
 		try {
-			const result = await axios.post('/api/users/login', user).data;
+			setLoading(true);
+
+			await axios.post('/api/users/login', user).data;
+			setLoading(false);
 		} catch (error) {
+			setError(true);
+			setLoading(false);
 			console.log(error);
 		}
 	};
@@ -24,7 +35,8 @@ const LoginScreen = () => {
 				<div className="col-md-5">
 					<div>
 						<h3>Login</h3>
-
+						{loading && <Loader />}
+						{error && <Error error="Invalid Credentials" />}
 						<input
 							type="email"
 							className="form-control"
