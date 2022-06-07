@@ -19,9 +19,10 @@ const LoginScreen = () => {
 
 		try {
 			setLoading(true);
-
-			await axios.post('/api/users/login', user).data;
+			const result = await axios.post('/api/users/login', user).data;
 			setLoading(false);
+			localStorage.setItem('currentUser', JSON.stringify(result));
+			window.location.href = '/';
 		} catch (error) {
 			setError(true);
 			setLoading(false);
