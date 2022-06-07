@@ -8,31 +8,30 @@ const RegisterScreen = () => {
 	const [confirmPassword, setConfirmPassword] = useState('');
 
 	const register = async () => {
-		if (password === confirmPassword) {
+		if (password !== confirmPassword) {
+			alert('Please enter matching passwords');
+		} else {
 			const user = {
 				name,
 				email,
 				password,
-				confirmPassword,
 			};
-			console.log(user);
 
 			try {
 				const result = await axios.post('/api/users/register', user).data;
 			} catch (error) {
 				console.log(error);
 			}
-		} else {
-			alert('Please enter matching passwords');
 		}
 	};
 
 	return (
-		<div>
+		<div className="register">
 			<div className="row justify-content-center mt-5">
 				<div className="col-md-5">
+					<h3 className="text-center m-2">Register</h3>
+
 					<div>
-						<h3>Register</h3>
 						<input
 							type="text"
 							className="form-control"
@@ -64,6 +63,10 @@ const RegisterScreen = () => {
 						<button className="btn btn-primary" onClick={register}>
 							Register
 						</button>
+						<br />
+						<a style={{ color: 'black' }} href="/login">
+							Click Here To Login
+						</a>
 					</div>
 				</div>
 			</div>
