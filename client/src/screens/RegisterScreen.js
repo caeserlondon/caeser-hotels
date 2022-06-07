@@ -1,11 +1,19 @@
 import axios from 'axios';
 import { useState } from 'react';
 
+import Error from '../components/Error';
+import Loader from '../components/Loader';
+import Success from '../components/Success';
+
 const RegisterScreen = () => {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
+
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState(false);
+	const [success, setSuccess] = useState(false);
 
 	const register = async () => {
 		if (password !== confirmPassword) {
@@ -18,8 +26,18 @@ const RegisterScreen = () => {
 			};
 
 			try {
-				const result = await axios.post('/api/users/register', user).data;
+				setLoading(true);
+				// const result = await axios.post('/api/users/register', user).data;
+				await axios.post('/api/users/register', user).data;
+				setLoading(false);
+				setSuccess(true);
+				setName('');
+				setEmail('');
+				setPassword('');
+				setConfirmPassword('');
 			} catch (error) {
+				setLoading(false);
+				setError(true);
 				console.log(error);
 			}
 		}
@@ -29,6 +47,10 @@ const RegisterScreen = () => {
 		<div className="register">
 			<div className="row justify-content-center mt-5">
 				<div className="col-md-5">
+					{loading && <Loader />}
+					{success && <Success success="User Registered Successfully" />}
+					{error && <Error error="Email already registred" />}
+
 					<h3 className="text-center m-2">Register</h3>
 
 					<div>
