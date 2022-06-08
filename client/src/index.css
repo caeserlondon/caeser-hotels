@@ -16,19 +16,26 @@ code {
 		monospace;
 }
 
+:root {
+	--primary-color: #a49366;
+}
+
 /* ------------------- NAV BAR --------------------  */
 
 .navbar {
 	background-color: black;
-	color: brown;
+	/* color: brown; */
+	color: var(--primary-color);
 }
 
 .nav-link {
-	color: brown;
+	/* color: brown; */
+	color: var(--primary-color);
 }
 
 .navbar-brand {
-	color: red;
+	/* color: red; */
+	color: var(--primary-color);
 }
 
 .navbar-nav .nav-link.active {
@@ -40,6 +47,23 @@ code {
 	margin-right: 30px;
 }
 
+.fa-bars {
+	color: var(--primary-color);
+	width: 100%;
+}
+
+#dropdownMenuButton1 {
+	background-color: transparent;
+	color: var(--primary-color);
+	border: none;
+}
+
+.dropdown-menu {
+	background-color: black;
+}
+a.dropdown-item {
+	color: var(--primary-color);
+}
 /* -------- HOME SCREEN ----------  */
 
 .small-img {
@@ -72,7 +96,7 @@ h6 {
 }
 
 .btn {
-	background-color: black;
+	/* background-color: black; */
 	color: white;
 	box-shadow: none;
 }
