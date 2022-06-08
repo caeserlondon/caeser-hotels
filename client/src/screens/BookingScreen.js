@@ -6,7 +6,7 @@ import Error from '../components/Error';
 
 function Bookingscreen() {
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState();
+	const [setError] = useState();
 	const [room, setRoom] = useState();
 	let { roomid } = useParams();
 
@@ -27,7 +27,7 @@ function Bookingscreen() {
 			}
 		}
 		fetchData();
-	}, [roomid]);
+	}, [roomid, setError]);
 
 	return (
 		<div className="booking-container">
