@@ -4,10 +4,18 @@ import Room from '../components/Room';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 
+// import { DatePicker, Space } from 'antd';
+import { DatePicker } from 'antd';
+import moment from 'moment';
+
 const HomeScreen = () => {
 	const [rooms, setRooms] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState();
+	const [setError] = useState();
+
+	const { RangePicker } = DatePicker;
+	const [fromDate, setFromDate] = useState();
+	const [toDate, setToDate] = useState();
 
 	useEffect(() => {
 		async function fetchData() {
@@ -24,10 +32,26 @@ const HomeScreen = () => {
 			}
 		}
 		fetchData();
-	}, []);
+		// }, []);
+	}, [setError, setLoading]);
+
+	const filterByDate = (dates) => {
+		setFromDate(moment(dates[0]).format('DD-MM-YYYY'));
+		setToDate(moment(dates[1]).format('DD-MM-YYYY'));
+	};
 
 	return (
 		<div className="container">
+			<div className="row mt-5 ">
+				<div className="col-md-4">
+					<RangePicker
+						format="DD-MM-YYYY"
+						className="range-picker"
+						onChange={filterByDate}
+					/>
+				</div>
+			</div>
+
 			<section className="row justify-content-center mt-5">
 				{loading ? (
 					<Loader />
@@ -36,7 +60,7 @@ const HomeScreen = () => {
 						// console.log(room);
 						return (
 							<article className="col-md-9 mt-2" key={room._id}>
-								<Room room={room} />
+								<Room room={room} fromDate={fromDate} toDate={toDate} />
 							</article>
 						);
 					})
