@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Navbar() {
+	const user = JSON.parse(window.localStorage.getItem('currentUser'));
 	return (
 		<div>
 			<nav className="navbar navbar-expand-lg">
@@ -21,20 +22,28 @@ function Navbar() {
 					</button>
 					<div className="collapse navbar-collapse" id="navbarNav">
 						<ul className="navbar-nav mr-auto">
-							<li className="nav-item">
-								<a
-									className="nav-link active"
-									aria-current="page"
-									href="/register"
-								>
-									Register
-								</a>
-							</li>
-							<li className="nav-item">
-								<a className="nav-link" href="/login">
-									Login
-								</a>
-							</li>
+							{user ? (
+								<>
+									<h3>{user.name}</h3>
+								</>
+							) : (
+								<>
+									<li className="nav-item">
+										<a
+											className="nav-link active"
+											aria-current="page"
+											href="/register"
+										>
+											Register
+										</a>
+									</li>
+									<li className="nav-item">
+										<a className="nav-link" href="/login">
+											Login
+										</a>
+									</li>
+								</>
+							)}
 						</ul>
 					</div>
 				</div>
