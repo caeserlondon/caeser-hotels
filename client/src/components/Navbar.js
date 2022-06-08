@@ -2,6 +2,12 @@ import React from 'react';
 
 function Navbar() {
 	const user = JSON.parse(window.localStorage.getItem('currentUser'));
+
+	const logOut = () => {
+		localStorage.removeItem('currentUser');
+		window.location.href = '/login';
+	};
+
 	return (
 		<div>
 			<nav className="navbar navbar-expand-lg">
@@ -18,22 +24,41 @@ function Navbar() {
 						aria-expanded="false"
 						aria-label="Toggle navigation"
 					>
-						<span className="navbar-toggler-icon"></span>
+						<span className="navbar-toggler-icon">
+							<i className="fa fa-bars"></i>
+						</span>
 					</button>
 					<div className="collapse navbar-collapse" id="navbarNav">
-						<ul className="navbar-nav mr-auto">
+						<ul className="navbar-nav mr-5">
 							{user ? (
 								<>
-									<h3>{user.name}</h3>
+									<div className="dropdown">
+										<button
+											className="btn btn-secondary dropdown-toggle"
+											type="button"
+											id="dropdownMenuButton1"
+											data-bs-toggle="dropdown"
+											aria-expanded="false"
+										>
+											<i className="fa fa-user"></i> {user.name}
+										</button>
+										<div
+											className="dropdown-menu"
+											aria-labelledby="dropdownMenuButton"
+										>
+											<a className="dropdown-item" href="#">
+												Bookings
+											</a>
+											<a className="dropdown-item" onClick={logOut} href="#">
+												Log Out
+											</a>
+										</div>
+									</div>
 								</>
 							) : (
 								<>
 									<li className="nav-item">
-										<a
-											className="nav-link active"
-											aria-current="page"
-											href="/register"
-										>
+										<a className="nav-link" href="/register">
 											Register
 										</a>
 									</li>
