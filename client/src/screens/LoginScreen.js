@@ -19,14 +19,15 @@ const LoginScreen = () => {
 
 		try {
 			setLoading(true);
-			const result = await axios.post('/api/users/login', user).data;
+			const result = (await axios.post('/api/users/login', user)).data;
+			setError(false);
 			setLoading(false);
 
 			localStorage.setItem('currentUser', JSON.stringify(result));
 			window.location.href = '/home';
 		} catch (error) {
-			setError(true);
 			setLoading(false);
+			setError(true);
 			console.log(error);
 		}
 	};
@@ -36,9 +37,9 @@ const LoginScreen = () => {
 			{loading && <Loader />}
 			<div className="row justify-content-center mt-5">
 				<div className="col-md-5">
-					{error && <Error error="Invalid Credentials" />}
+					{error && <Error message="Invalid Credentials" />}
 					<div>
-						<h3>Login</h3>
+						<h3>Sign In</h3>
 						<input
 							type="email"
 							className="form-control"
