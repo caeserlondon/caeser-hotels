@@ -61,6 +61,9 @@ function Bookingscreen() {
 						<p>Total Amount</p>
 					</div>
 					<div style={{ float: 'right' }}>
+						<a href="/home" className="btn btn-dark m-2">
+							Main Page
+						</a>
 						<button className="btn btn-dark">Pay Now</button>
 					</div>
 				</div>
