@@ -1,3 +1,9 @@
+@import '~antd/dist/antd.css';
+
+html {
+	--antd-wave-shadow-color: #a49366;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -9,6 +15,8 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 
 	font-family: 'Brand';
+	/* background-color: rgba(77, 62, 3, 0.254); */
+	background-color: #f9f5ea;
 }
 
 code {
@@ -24,17 +32,17 @@ code {
 
 .navbar {
 	background-color: black;
-	/* color: brown; */
 	color: var(--primary-color);
 }
 
 .nav-link {
-	/* color: brown; */
 	color: var(--primary-color);
 }
 
 .navbar-brand {
-	/* color: red; */
+	color: var(--primary-color);
+}
+.navbar-brand:hover {
 	color: var(--primary-color);
 }
 
@@ -61,11 +69,12 @@ code {
 .dropdown-menu {
 	background-color: black;
 }
+
 a.dropdown-item {
 	color: var(--primary-color);
 }
-/* -------- HOME SCREEN ----------  */
 
+/* -------- HOME SCREEN ----------  */
 .small-img {
 	height: 200px;
 	/* width: 100%; */
@@ -97,7 +106,7 @@ h6 {
 
 .btn {
 	/* background-color: black; */
-	color: white;
+	color: var(--primary-color);
 	box-shadow: none;
 }
 
@@ -113,6 +122,10 @@ h6 {
 	margin-top: 50px;
 	display: flex;
 	justify-content: center;
+}
+
+.range-picker {
+	background-color: var(--primary-color);
 }
 
 /* ------ REGISTER SCREEN ------  */
