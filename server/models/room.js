@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const roomSchema = mongoose.Schema(
 	{
@@ -36,10 +36,10 @@ const roomSchema = mongoose.Schema(
 	{
 		timestamps: true,
 	}
-);
+)
 
 // module.exports = mongoose.models.Room || mongoose.model('Room', roomSchema); to be used with new RoomSchema
 
-const roomModel = mongoose.model('rooms', roomSchema);
+const roomModel = mongoose.model('rooms', roomSchema)
 
-module.exports = roomModel;
+module.exports = roomModel
