@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { Modal, Button, Carousel } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Modal, Button, Carousel } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Room = ({ room }) => {
-	const [show, setShow] = useState(false);
+	const [show, setShow] = useState(false)
 
-	const handleClose = () => setShow(false);
-	const handleShow = () => setShow(true);
+	const handleClose = () => setShow(false)
+	const handleShow = () => setShow(true)
 	return (
-		<div className="row room-card">
-			<div className="col-md-4">
-				<img src={room.imageurls[0]} alt={room.name} className="small-img" />
+		<div className='row room-card'>
+			<div className='col-md-4'>
+				<img src={room.imageurls[0]} alt={room.name} className='small-img' />
 			</div>
-			<div className="col-md-7 text-left">
+			<div className='col-md-7 text-left'>
 				<h3>{room.name}</h3>
 				<p>{room.description}</p>
 				<h6> Guest Capacity: {room.guestCapacity} </h6>
@@ -20,16 +20,16 @@ const Room = ({ room }) => {
 				<h6>Located at: {room.address} </h6>
 				<div style={{ float: 'right' }}>
 					<Link to={`/book/${room._id}`}>
-						<button className="btn btn-dark m-2">Book Now</button>
+						<button className='btn btn-dark m-2'>Book Now</button>
 					</Link>
 
-					<button onClick={handleShow} className="btn btn-dark">
+					<button onClick={handleShow} className='btn btn-dark'>
 						View Details
 					</button>
 				</div>
 			</div>
 
-			<Modal show={show} onHide={handleClose} size="lg">
+			<Modal show={show} onHide={handleClose} size='lg'>
 				<Modal.Header>
 					<Modal.Title>{room.name}</Modal.Title>
 				</Modal.Header>
@@ -38,7 +38,7 @@ const Room = ({ room }) => {
 						{room.imageurls.map((url) => (
 							<Carousel.Item key={url}>
 								<img
-									className="d-block w-100 big-img"
+									className='d-block w-100 big-img'
 									src={url}
 									alt={room.name}
 								/>
@@ -48,13 +48,13 @@ const Room = ({ room }) => {
 					<p>{room.description}</p>
 				</Modal.Body>
 				<Modal.Footer>
-					<Button variant="dark" onClick={handleClose}>
+					<Button variant='dark' onClick={handleClose}>
 						Close
 					</Button>
 				</Modal.Footer>
 			</Modal>
 		</div>
-	);
-};
+	)
+}
 
-export default Room;
+export default Room
